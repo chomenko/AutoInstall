@@ -1,5 +1,5 @@
 {
-  "name": "chomenko/AutoInstall",
+  "name": "chomenko/auto-install",
   "type": "extensions",
   "description": "Service auto install for Nette Framework",
   "keywords": ["Auto", "Install", "Service"],
