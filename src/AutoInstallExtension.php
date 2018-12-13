@@ -20,11 +20,17 @@ class AutoInstallExtension extends CompilerExtension
 
     public $configuration = array(
         'dirs' => array(),
-        'temp_dir' => TEMP_DIR.'/autoInstall'
+        'temp_dir' => ""
     );
 
     public function loadConfiguration()
     {
+
+		$parameters = $this->getContainerBuilder()->parameters;
+
+		if (array_key_exists("tempDir", $parameters)) {
+			$this->configuration["temp_dir"] = $parameters["tempDir"];
+		}
 
         $this->config = $this->getConfig($this->configuration);
         $builder = $this->getContainerBuilder();
