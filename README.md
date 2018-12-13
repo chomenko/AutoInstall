@@ -9,6 +9,9 @@ composer require chomenko/auto-install
 ## Configuration
 
 ```yaml
+autoInstall:
+	dirs:
+	  - %rootDir%/app
 extensions:
     autoInstall: Chomenko\AutoInstall\AutoInstallExtension
 ```

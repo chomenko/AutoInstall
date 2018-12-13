@@ -29,7 +29,7 @@ class AutoInstallExtension extends CompilerExtension
 		$parameters = $this->getContainerBuilder()->parameters;
 
 		if (array_key_exists("tempDir", $parameters)) {
-			$this->configuration["temp_dir"] = $parameters["tempDir"];
+			$this->configuration["temp_dir"] = $parameters["tempDir"]."/autoInstall";
 		}
 
         $this->config = $this->getConfig($this->configuration);
