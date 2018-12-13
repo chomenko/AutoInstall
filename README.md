@@ -1,19 +1,19 @@
-#AutoInstall
+# AutoInstall
 
-##Install
+## Install
 
 ````sh
 composer require chomenko/auto-install
 ````
 
-##Configuration
+## Configuration
 
 ```yaml
 extensions:
     autoInstall: Chomenko\AutoInstall\AutoInstallExtension
 ```
 
-##Use
+## Use
 
 ```php
 use Chomenko\AutoInstall\AutoInstall;
