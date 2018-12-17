@@ -12,7 +12,7 @@ use Nette\DI\Compiler;
 use Nette\DI\CompilerExtension;
 use Nette\DI\ServiceDefinition;
 use Nette\Loaders\RobotLoader;
-use Symfony\Component\Console\Command\Command;
+use Doctrine\Common\Annotations\AnnotationReader;
 
 
 class AutoInstallExtension extends CompilerExtension
@@ -52,15 +52,33 @@ class AutoInstallExtension extends CompilerExtension
         }
     }
 
-    /**
-     * @param \ReflectionClass $reflect
-     * @param ServiceDefinition $definition
-     */
+	/**
+	 * @param \ReflectionClass $reflect
+	 * @param ServiceDefinition $definition
+	 * @throws \Doctrine\Common\Annotations\AnnotationException
+	 */
     private function applyTags(\ReflectionClass $reflect, ServiceDefinition $definition)
     {
-        if($reflect->isSubclassOf(Command::class)) {
-            $definition->addTag('kdyby.console.command');
-        }
+
+		$reader = new AnnotationReader();
+		$classAnnotations = $reader->getClassAnnotations($reflect);
+
+		foreach ($classAnnotations as $annotation) {
+			if ($annotation instanceof Tag) {
+				foreach ($annotation->getTags() as $tag) {
+					$definition->addTag($tag);
+				}
+			}
+		}
+
+		$consoleClass = "Symfony\Component\Console\Command\Command";
+		$kdybyClass = "Kdyby\Console\DI\ConsoleExtension";
+
+		if (class_exists($consoleClass) && class_exists($kdybyClass)) {
+			if($reflect->isSubclassOf(\Symfony\Component\Console\Command\Command::class)) {
+				$definition->addTag(\Kdyby\Console\DI\ConsoleExtension::TAG_COMMAND);
+			}
+		}
     }
 
 
