@@ -54,12 +54,29 @@ interface IMyService
 
 ```php
 
-use Chomenko\AutoInstall\Tag;
+use Chomenko\AutoInstall\Config;
 use Chomenko\AutoInstall\AutoInstall;
 
 
 /**
- * @Tag({"My.tag", "My.nextag"})
+ * @Config\Tag({"My.tag", "My.nextag"})
+ */
+class MyService implements AutoInstall
+{
+	
+}
+```
+
+## Set service implement
+
+```php
+
+use Chomenko\AutoInstall\Config;
+use Chomenko\AutoInstall\AutoInstall;
+
+
+/**
+ * @Config\Implement("App\IMyService")
  */
 class MyService implements AutoInstall
 {

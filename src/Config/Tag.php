@@ -5,7 +5,7 @@
  * Created: 29.11.2018 10:20
  */
 
-namespace Chomenko\AutoInstall;
+namespace Chomenko\AutoInstall\Config;
 
 use Doctrine\Common\Annotations\Annotation;
 
