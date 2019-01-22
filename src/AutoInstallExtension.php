@@ -83,8 +83,12 @@ class AutoInstallExtension extends CompilerExtension
 
 		foreach ($classAnnotations as $annotation) {
 			if ($annotation instanceof Tag) {
-				foreach ($annotation->getTags() as $tag) {
-					$definition->addTag($tag);
+				foreach ($annotation->getTags() as $key => $tag) {
+					if (is_int($key)) {
+						$definition->addTag($tag);
+					} else {
+						$definition->addTag($key, $tag);
+					}
 				}
 			}
 		}
