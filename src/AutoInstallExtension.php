@@ -144,7 +144,15 @@ class AutoInstallExtension extends CompilerExtension
 
 		$loader->register();
 		foreach ($loader->getIndexedClasses() as $className => $file) {
-			$reflect = new \ReflectionClass($className);
+
+			try {
+				$reflect = new \ReflectionClass($className);
+			} catch ( \ReflectionException $e) {
+				if ($e->getCode() == -1) {
+					continue;
+				}
+				throw $e;
+			}
 
 			if ($reflect->isAbstract()) {
 				continue;
