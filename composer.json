@@ -16,11 +16,11 @@
     "email": "mykola.chomenko@dipcom.cz"
   },
   "require": {
-    "php": ">=7.1",
-    "nette/di": ">=2.4",
-    "nette/caching": ">=2.5",
-    "nette/robot-loader": "^2.4 || ^3.0",
-    "doctrine/annotations": ">=v1.6.0"
+    "php": ">=7.2",
+    "nette/di": "^2.4",
+    "nette/caching": "^2.5",
+    "nette/robot-loader": "^3.0",
+    "doctrine/annotations": "^1.6"
   },
   "autoload": {
     "psr-4": {
