@@ -19,7 +19,7 @@
     "php": ">=7.2",
     "nette/di": "^2.4",
     "nette/caching": "^2.5",
-    "nette/robot-loader": "^3.0",
+    "nette/robot-loader": ">=2.4",
     "doctrine/annotations": "^1.6"
   },
   "autoload": {
